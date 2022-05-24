@@ -1,0 +1,4 @@
+IndentAccessModifiers: true
+NamespaceIndentation: All
+BreakBeforeBinaryOperators: NonAssignment
+PenaltyBreakAssignment: 80

@@ -1,0 +1,34 @@
+---
+Checks: >
+  -*,
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  clang-diagnostic-*,
+  cppcoreguidelines-*,
+  hicpp-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -cppcoreguidelines-pro-bounds-constant-array-index,
+  -cppcoreguidelines-pro-type-union-access,
+  -modernize-use-nodiscard,
+  -modernize-use-trailing-return-type,
+FormatStyle: file
+HeaderFilterRegex: .*
+
+# -cppcoreguidelines-pro-bounds-constant-array-index
+# Using at() without having exceptions enabled is dangerous, as it will just
+# call exit() on failure.  This will end up in an infinite loop, which might
+# not trigger the watchdog in all situations.
+
+# -modernize-use-nodiscard
+# It just adds a lot of noise without having a real benefit for 90 % of
+# functions.  We'll add it, if checking return type is really mandatory
+# such as when working with mutexes.
+
+# -modernize-use-trailing-return-type
+# It's verbose and I have not found a compelling reason why it's preferable,
+# yet.
